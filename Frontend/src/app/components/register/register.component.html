@@ -1,0 +1,24 @@
+<p>login works!</p>
+<form [formGroup]="form" (submit)="createUser()">
+    <div class="section-form">
+        <label for="email">Email</label>
+        <input [formControlName]="userFields.email" type="text" id="email" />
+    </div>
+    <br />
+    <div class="section-form">
+        <label for="password">Password</label>
+        <input [formControlName]="userFields.password" type="text" id="password" />
+    </div>
+    <div class="section-form">
+        <label for="name">Nombre</label>
+        <input [formControlName]="userFields.name" type="text" id="name" />
+    </div>
+    <div class="section-form">
+        <label for="surname">Apellido</label>
+        <input [formControlName]="userFields.surname" type="text" id="surname" />
+    </div>
+    <br />
+    <div class="flex flex-justify-content-between">
+        <input type="submit" value="Send Request" />
+    </div>
+</form>

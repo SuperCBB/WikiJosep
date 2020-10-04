@@ -1,0 +1,29 @@
+@import '../../../assets/variables'
+@import '../../../assets/flex'
+
+header
+    position: relative
+    width: 100vw
+    height: $header-height
+    box-sizing: border-box
+    color: $white-text-color
+    margin-bottom: 10px
+
+    &::after
+        content: ""
+        $heigt: 15px
+        position: absolute
+        top: calc(100% - #{$heigt - 5px})
+        height: $heigt
+        left: $menu-width
+        width: calc(100vw - #{$menu-width})
+        box-shadow: 0px $heigt $heigt 0px $background-color
+
+    .content
+        box-sizing: border-box
+        padding: 10px 25px
+
+        h1
+            margin-right: 10px
+
+

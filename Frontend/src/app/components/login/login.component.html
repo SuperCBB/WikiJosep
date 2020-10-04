@@ -1,0 +1,17 @@
+<form [formGroup]="form" (submit)="login()">
+    <div class="section-form">
+        <label for=¨email¨>Email</label>
+        <input [formControlName]="loginFields.email" type=¨text¨ id=¨email¨ />
+    </div>
+    <br />
+    <div class="section-form">
+        <label for=¨password¨>Password</label>
+        <input [formControlName]="loginFields.password" type=¨text¨ id=¨password¨ />
+    </div>
+    <br />
+    <div class="flex flex-justify-content-between">
+        <input type="submit" value="Send Request" />
+
+        <button (click)="navigateToRegister()">Register</button>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+@import '../assets/flex'
+@import '../assets/variables'
+
+::ng-deep router-outlet + *
+    display: block
+    width: calc(100vw - #{$menu-width})
+    max-height: calc(100vh - #{$footer-height} - #{$header-height})
+    overflow-y: auto
+    overflow-x: hidden
+    padding: 15px 20px
+    box-sizing: border-box

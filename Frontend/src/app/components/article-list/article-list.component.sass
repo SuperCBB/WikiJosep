@@ -1,0 +1,17 @@
+@import '../../../assets/variables'
+@import '../../../assets/width'
+@import '../../../assets/flex'
+
+$search-section-height: 50px
+
+.content
+    height: calc(100vh - #{$footer-height} - #{$header-height})
+    padding: 15px
+
+    .list-container
+        max-height: calc(100vh - #{$footer-height} - #{$header-height} - #{$search-section-height})
+        overflow-y: auto
+
+    .search-section
+        height: $search-section-height
+        width: 100%

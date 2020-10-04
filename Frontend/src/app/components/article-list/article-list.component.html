@@ -1,0 +1,12 @@
+<div class="content flex flex-wrap">
+    <div class="flex flex-align-items-center flex-justify-content-center search-section">
+        <app-search-drop-down [options]="options"></app-search-drop-down>
+    </div>
+    <div class="card list-container" *ngFor="let article of article$ | async; let index = index" [ngClass]="{ 
+            w50: index % 2 !== 0 , 
+            w50calc: index % 2 === 0 
+        }">
+        <h2> {{ article.title }} {{index}}</h2>
+        <p> {{ article.description }} </p>
+    </div>
+</div>

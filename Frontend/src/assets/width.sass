@@ -1,0 +1,38 @@
+@mixin width($width)
+    width: $width
+
+    &calc
+        $margin: 20px
+        margin-right: 20px
+        width: calc( #{$width} - #{$margin} )
+
+.w100
+    @include width(100%)
+
+.w90
+    @include width(90%)
+
+.w80
+    @include width(80%)
+
+.w70
+    @include width(70%)
+
+.w60
+    @include width(60%)
+
+.w50
+    @include width(50%)
+
+.w40
+    @include width(40%)
+
+.w30
+    @include width(30%)
+
+.w20
+    @include width(20%)
+
+.w10
+    @include width(10%)
+

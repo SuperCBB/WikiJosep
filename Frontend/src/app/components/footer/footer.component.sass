@@ -1,0 +1,23 @@
+@import '../../../assets/variables'
+@import '../../../assets/flex'
+
+footer
+    position: relative
+    height: $footer-height
+    width: 100vw
+    color: $white-text-color
+
+    &::after
+        content: ""
+        $heigt: 15px
+        position: absolute
+        bottom: calc(100% - #{$heigt + 5px})
+        height: $heigt
+        left: $menu-width
+        width: calc(100vw - #{$menu-width})
+        box-shadow: 0px #{-1 * $heigt} $heigt 0px $background-color
+
+    .rights
+        margin-top: auto
+        margin-bottom: 10px
+        padding: 0 25px
