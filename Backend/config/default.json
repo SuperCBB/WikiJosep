@@ -28,5 +28,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://localhost:27017/wiki_josep"
+  "mongodb": "mongodb://mongodbconnection:27017/wiki_josep"
 }

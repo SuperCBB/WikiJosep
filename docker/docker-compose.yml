@@ -12,23 +12,39 @@ services:
       - wiki_josep_mongo_db:mongodbconnection
     depends_on:
       - wiki_josep_mongo_db
-    command: ["../wait-for", "mongodbconnection:27017", "--", "supervisor", "-i", "node_modules", "/home/node/app/src/index.ts"]
+    command:  [
+        '../../wait-for',
+        'mongodbconnection:27017',
+        '--',
+        'supervisor',
+        '-e',
+        'node,js,ts',
+        '-i',
+        'node_modules',
+        '-x',
+        'npm',
+        'start',
+      ]
+
 
   #MONGODB
   wiki_josep_mongo_db:
     image: mongo:4.4
     volumes:
-      - ./mongovolumen:/data/db
+      - mongovolumen:/data/db
     ports:
       - "27017:27017"
-    command: --smallfiles
 
   #ANGULAR
-  wiki_josepp_frontend:
+  wiki_josep_frontend:
     build: ../Frontend
     ports:
       - "4200:4200"
+    environment:
+      - NODE_ENV=development
     volumes:
       - ../Frontend:/home/node/app
-    command: ng serve --host 0.0.0.0 --disable-host-check --liveReload=true
+    command: ng serve --configuration=${NG_ENV} --host 0.0.0.0  --disable-host-check
       
+volumes:
+  mongovolumen:
