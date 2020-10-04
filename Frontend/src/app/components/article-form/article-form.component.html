@@ -1,0 +1,18 @@
+<h2> Crear artículo </h2>
+<form *ngIf="form" [formGroup]="form" (submit)="saveData()">
+    <div class="w100 flex">
+        <div class="section-form w50calc">
+            <label for="title"> Titulo </label>
+            <input [formControlName]="articleFields.title" type="text" id="title">
+        </div>
+        <div class="section-form w50">
+            <label for="image"> Imagen </label>
+            <input type="file" id="image" (change)="onLoadFile($event)">
+        </div>
+    </div>
+    <div class="section-form">
+        <label for="description"> Descripción </label>
+        <textarea [formControlName]="articleFields.description" id="description"> </textarea>
+    </div>
+    <input type="submit" value="Crear">
+</form>

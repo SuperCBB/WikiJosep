@@ -1,0 +1,7 @@
+<div>
+    <label> {{( user$ | async )?.email}}</label>
+    <span (click)="toggleLogout()">flechita xd</span>
+    <div *ngIf="displayLogout" class="popup">
+        <label (click)="logout()"> Logout </label>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<form class="w100 flex flex-row flex-wrap" [formGroup]="form">
+    <div class="section-form w50calc">
+        <label> Buscar por: </label>
+        <app-drop-down 
+            [formControlName]="formControlName"
+            [selectText]="selectText"
+            [options]="options"
+            (select)="onSelectOption($event)">
+        </app-drop-down>
+    </div>
+    <div class="section-form w50">
+        <label> Buscar </label>
+        <input [formControlName]="'search'" [disableControl]="!selectedKey" type="text">
+    </div>
+</form>

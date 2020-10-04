@@ -1,0 +1,34 @@
+version: "3"
+services:
+
+  #FEATHERS
+  wiki_josep_backend:
+    build: ../Backend
+    ports:
+      - "3030:3030"
+    volumes:
+      - ../Backend:/home/node/app
+    links:
+      - wiki_josep_mongo_db:mongodbconnection
+    depends_on:
+      - wiki_josep_mongo_db
+    command: ["../wait-for", "mongodbconnection:27017", "--", "supervisor", "-i", "node_modules", "/home/node/app/src/index.ts"]
+
+  #MONGODB
+  wiki_josep_mongo_db:
+    image: mongo:4.4
+    volumes:
+      - ./mongovolumen:/data/db
+    ports:
+      - "27017:27017"
+    command: --smallfiles
+
+  #ANGULAR
+  wiki_josepp_frontend:
+    build: ../Frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ../Frontend:/home/node/app
+    command: ng serve --host 0.0.0.0 --disable-host-check --liveReload=true
+      
