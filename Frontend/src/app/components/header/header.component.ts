@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     this.translateService.getLangs();
     this.translateService.get('test').subscribe(resutl => {
     },
-        error => {
+      error => {
       })
   }
 
