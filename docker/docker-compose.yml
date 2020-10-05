@@ -1,31 +1,31 @@
 version: "3"
 services:
-
   #FEATHERS
   wiki_josep_backend:
     build: ../Backend
     ports:
       - "3030:3030"
+      - "3101:3101"
     volumes:
       - ../Backend:/home/node/app
     links:
       - wiki_josep_mongo_db:mongodbconnection
     depends_on:
       - wiki_josep_mongo_db
-    command:  [
-        '../../wait-for',
-        'mongodbconnection:27017',
-        '--',
-        'supervisor',
-        '-e',
-        'node,js,ts',
-        '-i',
-        'node_modules',
-        '-x',
-        'npm',
-        'start',
+    command:
+      [
+        "/wait-for",
+        "mongodbconnection:27017",
+        "--",
+        "supervisor",
+        "-e",
+        "node,js,ts",
+        "-i",
+        "node_modules",
+        "-x",
+        "npm",
+        "start",
       ]
-
 
   #MONGODB
   wiki_josep_mongo_db:
@@ -45,6 +45,6 @@ services:
     volumes:
       - ../Frontend:/home/node/app
     command: ng serve --configuration=${NG_ENV} --host 0.0.0.0 --disable-host-check --liveReload=true --poll 500
-      
+
 volumes:
   mongovolumen:

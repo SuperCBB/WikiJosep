@@ -3,8 +3,8 @@
 
 ::ng-deep router-outlet + *
     display: block
-    width: calc(100vw - #{$menu-width})
-    max-height: calc(100vh - #{$footer-height} - #{$header-height})
+    width: calc(100vw - #{$menu-width} - 20px * 2)
+    max-height: calc(100vh - #{$footer-height} - #{$header-height} + 15px * 2)
     overflow-y: auto
     overflow-x: hidden
     padding: 15px 20px

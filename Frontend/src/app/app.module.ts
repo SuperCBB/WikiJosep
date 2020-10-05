@@ -52,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    TranslateModule.forChild({
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

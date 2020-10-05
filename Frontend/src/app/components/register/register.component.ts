@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser(): void {
-    debugger
     if (this.form.valid) {
       const user: User = this.form.getRawValue();
       this.userEndpoint.create(user).subscribe(user => {

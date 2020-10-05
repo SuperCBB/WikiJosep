@@ -5,8 +5,9 @@
 $search-section-height: 50px
 
 .content
-    height: calc(100vh - #{$footer-height} - #{$header-height})
+    height: calc(100vh - #{$footer-height} - #{$header-height} - 15px * 2)
     padding: 15px
+    width: 100%
 
     .list-container
         max-height: calc(100vh - #{$footer-height} - #{$header-height} - #{$search-section-height})
@@ -15,3 +16,4 @@ $search-section-height: 50px
     .search-section
         height: $search-section-height
         width: 100%
+        margin: 20px 0

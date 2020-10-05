@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Option } from 'src/app/interface/option.interface';
 import * as _ from 'lodash';
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-drop-down',
   templateUrl: './drop-down.component.html',
@@ -9,6 +10,7 @@ import * as _ from 'lodash';
 export class DropDownComponent<T = unknown> implements OnInit {
   @Input() selectText = 'Seleccione una opción'
   @Input() formControlName: string;
+  @Input() form: FormGroup;
   @Input() options: Option<T>[] = [];
   @Output() select: EventEmitter<T> = new EventEmitter<T>()
 

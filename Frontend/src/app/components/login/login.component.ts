@@ -32,11 +32,11 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       const loginData: Partial<User> = this.form.getRawValue();
       this.userEndpoint.login(loginData).subscribe(result => {
+        debugger
         this.userService.user = result.user;
         this.userService.accesToken = result.accessToken
         this.route.navigate(['/home'])
       }, err => {
-        debugger
       })
     } else {
       alert('WIKI JOSEP NO TE CONOCE xd')

@@ -1,10 +1,12 @@
-<ng-container *ngIf="formControlName">
-    <select [formControlName]="formControlName" (change)="onSelectOption($event.target.value)">
-        <option *ngIf="!selectedOption" [value]="null"> {{ selectText }} </option>
-        <option *ngFor="let option of options" [value]="option" [selected]="option.selected">
-            {{ option.label }}
-        </option>
-    </select>
+<ng-container *ngIf="formControlName && form">
+    <form [formGroup]="form">
+        <select [formControlName]="formControlName" (change)="onSelectOption($event.target.value)">
+            <option *ngIf="!selectedOption" [value]="null"> {{ selectText }} </option>
+            <option *ngFor="let option of options" [value]="option" [selected]="option.selected">
+                {{ option.label }}
+            </option>
+        </select>
+    </form>
 </ng-container>
 
 {{!!selectedOption}}

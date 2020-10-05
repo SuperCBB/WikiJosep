@@ -24,7 +24,7 @@
     "test": "npm run lint && npm run compile && npm run jest",
     "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
     "dev": "ts-node-dev --no-notify src/",
-    "start": "npm run compile && node lib/",
+    "start": "nodemon --exec 'ts-node --files src/'",
     "jest": "jest  --forceExit",
     "compile": "shx rm -rf lib/ && tsc"
   },
