@@ -4,29 +4,27 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.sass']
+  styleUrls: ['./menu.component.sass'],
 })
 export class MenuComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   readonly menu = [
     {
       path: 'home',
-      label: 'Inicio'
+      label: 'Inicio',
     },
     {
       path: 'article/create',
-      label: 'Crear artículo'
+      label: 'Crear artículo',
     },
     {
       path: 'article/list',
-      label: 'Artículos'
-    }
-  ]
+      label: 'Artículos',
+    },
+  ];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   navigateTo(path: string): void {
     this.router.navigate([path]);

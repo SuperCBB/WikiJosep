@@ -5,24 +5,21 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
-
   constructor(private router: Router, private translateService: TranslateService) {
     this.translateService.setDefaultLang('es');
     this.translateService.getLangs();
-    this.translateService.get('test').subscribe(resutl => {
-    },
-        error => {
-      })
+    this.translateService.get('test').subscribe(
+      (resutl) => {},
+      (error) => {}
+    );
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   navigateToHome(): void {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home']);
   }
-
 }

@@ -9,19 +9,19 @@ enum ArticleFields {
   description = 'description',
   title = 'title',
   image = 'image',
-  language = 'language'
+  language = 'language',
 }
 @Component({
   selector: 'app-article-form',
   templateUrl: './article-form.component.html',
-  styleUrls: ['./article-form.component.sass']
+  styleUrls: ['./article-form.component.sass'],
 })
 export class ArticleFormComponent implements OnInit {
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private articlesEndpoint: ArticleEndpointService) {
+    private articlesEndpoint: ArticleEndpointService
+  ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.isNewModel = !this.id;
   }
@@ -36,8 +36,8 @@ export class ArticleFormComponent implements OnInit {
         const article = await this.articlesEndpoint.getById(this.id).toPromise();
         this.form = this.getForm(article);
       } catch (error) {
-        console.log(error)
-        alert('HA OCURRIDO UN ERROR xd')
+        console.log(error);
+        alert('HA OCURRIDO UN ERROR xd');
       }
     } else {
       this.form = this.getForm();
@@ -53,51 +53,52 @@ export class ArticleFormComponent implements OnInit {
       reader.onload = (readerEvt: ProgressEvent<FileReader>) => {
         const binaryString: string = readerEvt.target.result as string;
         this.form.get(ArticleFields.image).setValue(binaryString);
-      }
+      };
       reader.readAsBinaryString(file);
     }
   }
 
   getForm(article?: Article): FormGroup {
     return new FormGroup({
-      [ArticleFields.title]: new FormControl(
-        _.get(article, ArticleFields.title),
-        { validators: Validators.required }
-      ),
-      [ArticleFields.description]: new FormControl(
-        _.get(article, ArticleFields.description),
-        { validators: Validators.required }
-      ),
-      [ArticleFields.image]: new FormControl(
-        _.get(article, ArticleFields.image),
-        { validators: Validators.required }
-      ),
-      [ArticleFields.language]: new FormControl(
-        _.get(article, ArticleFields.language, 'es')
-        , { validators: Validators.required }
-      ),
-    })
+      [ArticleFields.title]: new FormControl(_.get(article, ArticleFields.title), {
+        validators: Validators.required,
+      }),
+      [ArticleFields.description]: new FormControl(_.get(article, ArticleFields.description), {
+        validators: Validators.required,
+      }),
+      [ArticleFields.image]: new FormControl(_.get(article, ArticleFields.image), {
+        validators: Validators.required,
+      }),
+      [ArticleFields.language]: new FormControl(_.get(article, ArticleFields.language, 'es'), {
+        validators: Validators.required,
+      }),
+    });
   }
 
   saveData(): void {
     if (this.form.valid) {
       const article: Article = this.form.getRawValue();
       if (this.isNewModel) {
-        this.articlesEndpoint.create(article).subscribe(article => {
-          alert('ARTICULO CREADO');
-          this.router.navigate(['/articles'])
-        }, error => {
-          alert('ERROR')
-        })
+        this.articlesEndpoint.create(article).subscribe(
+          (article) => {
+            alert('ARTICULO CREADO');
+            this.router.navigate(['/articles']);
+          },
+          (error) => {
+            alert('ERROR');
+          }
+        );
       } else {
-        this.articlesEndpoint.update(article).subscribe(article => {
-          alert('ARTICULO CREADO');
-          this.router.navigate(['/articles'])
-        }, error => {
-          alert('ERROR')
-        })
+        this.articlesEndpoint.update(article).subscribe(
+          (article) => {
+            alert('ARTICULO CREADO');
+            this.router.navigate(['/articles']);
+          },
+          (error) => {
+            alert('ERROR');
+          }
+        );
       }
     }
   }
-
 }

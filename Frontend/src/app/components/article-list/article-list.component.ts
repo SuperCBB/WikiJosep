@@ -9,36 +9,33 @@ import { SearchQuery } from 'src/app/types/search-query.type';
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.sass']
+  styleUrls: ['./article-list.component.sass'],
 })
 export class ArticleListComponent implements OnInit {
-
-  constructor(private articleEndpoint: ArticleEndpointService) { }
+  constructor(private articleEndpoint: ArticleEndpointService) {}
   readonly options: Option<SearchQuery<Article>>[] = [
     {
       label: 'Titulo',
       selected: false,
-      value: { title: 'title' }
-    }
+      value: { title: 'title' },
+    },
     // {
     //   label: 'Autor',
     //   selected: false,
     //   value: { title: 'title' }
     // },
-  ]
+  ];
 
   total: number;
   article$: Observable<Article[]>;
   ngOnInit(): void {
     this.article$ = this.articleEndpoint.getAll().pipe(
-      tap(result => {
+      tap((result) => {
         this.total = result.total;
       }),
-      map(result => result.data));
+      map((result) => result.data)
+    );
   }
 
-  searchBy(text: string): void {
-
-  }
-
+  searchBy(text: string): void {}
 }

@@ -24,7 +24,6 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 
-
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, environment.localePath, '.json');
 }
@@ -44,7 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ArticleListComponent,
     DropDownComponent,
     SearchDropDownComponent,
-    DisableControlDirective
+    DisableControlDirective,
   ],
   imports: [
     BrowserModule,
@@ -56,11 +55,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

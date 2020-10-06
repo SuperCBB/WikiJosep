@@ -15,15 +15,15 @@ const routes: Routes = [
   // },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'article',
@@ -31,30 +31,30 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'list'
+        redirectTo: 'list',
       },
       {
         path: 'list',
-        component: ArticleListComponent
+        component: ArticleListComponent,
       },
       {
         path: 'create',
-        component: ArticleFormComponent
+        component: ArticleFormComponent,
       },
       {
         path: 'edit/:id',
-        component: ArticleFormComponent
+        component: ArticleFormComponent,
       },
       {
         path: ':id',
-        component: ArticleComponent
-      }
-    ]
-  }
+        component: ArticleComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,5 +1,5 @@
-export interface PaginatedData<T>  {
-    total: number;
-    skip: number;
-    data: T[];
+export interface PaginatedData<T> {
+  total: number;
+  skip: number;
+  data: T[];
 }

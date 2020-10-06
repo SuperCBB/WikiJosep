@@ -5,16 +5,16 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-drop-down',
   templateUrl: './drop-down.component.html',
-  styleUrls: ['./drop-down.component.sass']
+  styleUrls: ['./drop-down.component.sass'],
 })
 export class DropDownComponent<T = unknown> implements OnInit {
-  @Input() selectText = 'Seleccione una opción'
+  @Input() selectText = 'Seleccione una opción';
   @Input() formControlName: string;
   @Input() form: FormGroup;
   @Input() options: Option<T>[] = [];
-  @Output() select: EventEmitter<T> = new EventEmitter<T>()
+  @Output() select: EventEmitter<T> = new EventEmitter<T>();
 
-  constructor() { }
+  constructor() {}
   selectedOption: Option<T>;
 
   ngOnInit(): void {
@@ -22,15 +22,14 @@ export class DropDownComponent<T = unknown> implements OnInit {
   }
 
   private getSelectedOption(): Option<T> {
-    return this.options.find(option => option.selected);
+    return this.options.find((option) => option.selected);
   }
 
-  onSelectOption(option: Option<T>): void{
-    if(!_.isEqual(option, this.selectedOption)){
+  onSelectOption(option: Option<T>): void {
+    if (!_.isEqual(option, this.selectedOption)) {
       option.selected = true;
       this.selectedOption = option;
       this.select.emit(this.selectedOption.value);
     }
   }
-
 }

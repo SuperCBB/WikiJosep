@@ -4,15 +4,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../interface/user.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   private _user: User = this.getUser();
   private _accesToken = localStorage.getItem('accesToken');
-  private _user$: BehaviorSubject<User> = new BehaviorSubject<User>(this._user)
+  private _user$: BehaviorSubject<User> = new BehaviorSubject<User>(this._user);
 
   get user$(): Observable<User> {
     return this._user$.asObservable();
@@ -24,9 +23,9 @@ export class UserService {
 
   set user(user: User) {
     if (this._user$) {
-      localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('user', JSON.stringify(user));
       this._user = user;
-      this._user$.next(this._user)
+      this._user$.next(this._user);
     }
   }
 
@@ -43,13 +42,13 @@ export class UserService {
     this._user = null;
     localStorage.removeItem('user');
     this._user$.next(null);
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   private getUser(): User {
     const user: string = localStorage.getItem('user');
     if (user) {
-      return JSON.parse(user)
+      return JSON.parse(user);
     }
   }
 }

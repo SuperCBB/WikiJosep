@@ -7,45 +7,48 @@ import { UserService } from 'src/app/services/user.service';
 
 enum LoginFields {
   email = 'email',
-  password = 'password'
+  password = 'password',
 }
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
 })
-
 export class LoginComponent implements OnInit {
-
-  constructor(private route: Router, private userEndpoint: UserEndpointService, private userService: UserService) { }
+  constructor(
+    private route: Router,
+    private userEndpoint: UserEndpointService,
+    private userService: UserService
+  ) {}
   readonly loginFields = LoginFields;
   readonly form: FormGroup = new FormGroup({
-    [LoginFields.email]: new FormControl('', { validators: [Validators.required, Validators.email] }),
-    [LoginFields.password]: new FormControl('', { validators: Validators.required })
+    [LoginFields.email]: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+    }),
+    [LoginFields.password]: new FormControl('', { validators: Validators.required }),
   });
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login(): void {
     if (this.form.valid) {
       const loginData: Partial<User> = this.form.getRawValue();
-      this.userEndpoint.login(loginData).subscribe(result => {
-        debugger
-        this.userService.user = result.user;
-        this.userService.accesToken = result.accessToken
-        this.route.navigate(['/home'])
-      }, err => {
-      })
+      this.userEndpoint.login(loginData).subscribe(
+        (result) => {
+          debugger;
+          this.userService.user = result.user;
+          this.userService.accesToken = result.accessToken;
+          this.route.navigate(['/home']);
+        },
+        (err) => {}
+      );
     } else {
-      alert('WIKI JOSEP NO TE CONOCE xd')
+      alert('WIKI JOSEP NO TE CONOCE xd');
     }
-
   }
 
   navigateToRegister(): void {
-    this.route.navigate(['/register'])
+    this.route.navigate(['/register']);
   }
-
 }
