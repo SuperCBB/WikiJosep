@@ -26,7 +26,23 @@
     "dev": "ts-node-dev --no-notify src/",
     "start": "nodemon --exec 'ts-node --files src/'",
     "jest": "jest  --forceExit",
-    "compile": "shx rm -rf lib/ && tsc"
+    "compile": "shx rm -rf lib/ && tsc",
+    "prettier": "prettier --single-quote --write \"src/**/*.ts\"",
+    "prettier-check": "prettier --check \"src/**/*.ts\""
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "bracketSpacing": true,
+    "parser": "typescript"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.ts\""
+    }
   },
   "standard": {
     "env": [
@@ -67,7 +83,10 @@
     "@typescript-eslint/parser": "^4.3.0",
     "axios": "^0.20.0",
     "eslint": "^7.10.0",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
+    "prettier": "2.1.2",
+    "pretty-quick": "^3.0.2",
     "shx": "^0.3.2",
     "ts-jest": "^26.4.1",
     "ts-node-dev": "^1.0.0-pre.63",

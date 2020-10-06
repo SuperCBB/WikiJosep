@@ -12,7 +12,7 @@ export default {
     create: [disallow()],
     update: [disallow()],
     patch: [disallow()],
-    remove: [disallow()]
+    remove: [disallow()],
   },
 
   after: {
@@ -22,7 +22,7 @@ export default {
     create: [disallow()],
     update: [disallow()],
     patch: [disallow()],
-    remove: [disallow()]
+    remove: [disallow()],
   },
 
   error: {
@@ -32,6 +32,6 @@ export default {
     create: [],
     update: [],
     patch: [],
-    remove: []
-  }
+    remove: [],
+  },
 };
