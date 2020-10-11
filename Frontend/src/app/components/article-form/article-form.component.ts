@@ -8,8 +8,6 @@ import * as _ from 'lodash';
 enum ArticleFields {
   description = 'description',
   title = 'title',
-  image = 'image',
-  language = 'language',
 }
 @Component({
   selector: 'app-article-form',
@@ -44,32 +42,12 @@ export class ArticleFormComponent implements OnInit {
     }
   }
 
-  onLoadFile(event: InputEvent): void {
-    const file = _.get(event, 'target.files[0]');
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (readerEvt: ProgressEvent<FileReader>) => {
-        const binaryString: string = readerEvt.target.result as string;
-        this.form.get(ArticleFields.image).setValue(binaryString);
-      };
-      reader.readAsBinaryString(file);
-    }
-  }
-
   getForm(article?: Article): FormGroup {
     return new FormGroup({
       [ArticleFields.title]: new FormControl(_.get(article, ArticleFields.title), {
         validators: Validators.required,
       }),
       [ArticleFields.description]: new FormControl(_.get(article, ArticleFields.description), {
-        validators: Validators.required,
-      }),
-      [ArticleFields.image]: new FormControl(_.get(article, ArticleFields.image), {
-        validators: Validators.required,
-      }),
-      [ArticleFields.language]: new FormControl(_.get(article, ArticleFields.language, 'es'), {
         validators: Validators.required,
       }),
     });

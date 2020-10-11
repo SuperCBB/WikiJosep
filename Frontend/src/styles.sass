@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/variables'
+@import '~quill/dist/quill.core.css'
+@import '~quill/dist/quill.bubble.css'
+@import '~quill/dist/quill.snow.css'
+
+h1, h2, h3, h4 ,h5 ,h6
+    color: white
 
 body
     height: 100vh
@@ -11,9 +17,10 @@ button, input[type="submit"]
     background: black
     color: white
     cursor: pointer
-    border: 1px solid white
+    border: 0
     margin-top: 10px
     margin-left: auto
+    padding: 5px 10px
 
     &:hover
         background: white
